@@ -1,6 +1,7 @@
 
 #
 # TODO : libfo subpackage, but I dont think any other package may use it.
+#        build with enable-gp - currently there is a problem with linking against pango-1.0.so from xmlroof.
 #
 
 Summary:	XSL formatter
@@ -46,7 +47,7 @@ stworzonym przez W3C.
 %configure \
 	--with-html-dir=%{_gtkdocdir} \
 	--enable-pdflib \
-	--enable-gp
+	--disable-gp
 %{__make}
 
 %install
