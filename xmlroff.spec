@@ -1,18 +1,17 @@
 
 #
 # TODO : libfo subpackage, but I dont think any other package may use it.
-#        build with enable-gp - currently there is a problem with linking against pango-1.0.so from xmlroof.
 #
 
 Summary:	XSL formatter
 Summary(pl):	Program formatuj±cy XSL
 Name:		xmlroff
-Version:	0.2.7
-Release:	0.1
+Version:	0.2.8
+Release:	1
 License:	distributable
 Group:		Applications/Publishing/XML
 Source0:	http://dl.sourceforge.net/xmlroff/%{name}-%{version}.tar.gz
-# Source0-md5:	1b5c49769f6d0bd222fc913ee14da7dc
+# Source0-md5:	810e545c44cb9716983bee6a89458be6
 Patch0:		%{name}-no_static.patch
 URL:		http://xmlroff.sourceforge.net/
 BuildRequires:	autoconf
@@ -46,7 +45,8 @@ stworzonym przez W3C.
 %{__automake}
 %configure \
 	--with-html-dir=%{_gtkdocdir} \
-	--disable-gp
+	--enable-pdflib \
+	--enable-gp
 %{__make}
 
 %install
