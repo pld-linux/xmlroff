@@ -1,4 +1,5 @@
 Summary:	XSL formatter
+Summary(pl):	Program formatuj±cy XSL
 Name:		xmlroff
 Version:	0.2.2
 Release:	0.1
@@ -10,10 +11,17 @@ BuildRequires:	pangopdf-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Xmlroff is an XSL formatter. That is, it creates formatted output - pages
-containing text in a variety of type styles and sizes - from an input XML
-document and an XSL stylesheet. This processing model is defined in the XSL
-Recommendation that was developed by the W3C.
+Xmlroff is an XSL formatter. That is, it creates formatted output -
+pages containing text in a variety of type styles and sizes - from an
+input XML document and an XSL stylesheet. This processing model is
+defined in the XSL Recommendation that was developed by the W3C.
+
+%description -l pl
+xmlroff to program formatuj±cy XSL - tzn. tworz±cy na wyj¶ciu
+strony sformatowane zawieraj±ce tekst w ró¿nych stylach i rozmiarach
+na podstawie wej¶ciowego dokumentu XML i arkusza stylu XSL. Ten model
+przetwarzania zosta³ zdefiniowany w dokumencie XSL Recommendation
+stworzonym przez W3C.
 
 %prep
 %setup -q
