@@ -1,3 +1,9 @@
+
+#
+# TODO : libfo subpackage, but I dont think any other package may use it.
+#        build with enable-gp - currently there is a problem with linking against pango-1.0.so from xmlroof.
+#
+
 Summary:	XSL formatter
 Summary(pl):	Program formatuj±cy XSL
 Name:		xmlroff
@@ -39,7 +45,8 @@ stworzonym przez W3C.
 %{__autoconf}
 %{__automake}
 %configure \
-	--with-html-dir=%{_gtkdocdir}
+	--with-html-dir=%{_gtkdocdir} \
+	--disable-gp
 %{__make}
 
 %install
@@ -55,5 +62,5 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc ChangeLog README COPYING
 %attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_libdir}/libfo-*.so
+%attr(755,root,root) %{_libdir}/libfo-*.so.*
 %{_gtkdocdir}/xmlroff
