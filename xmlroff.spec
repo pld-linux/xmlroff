@@ -5,7 +5,8 @@ Version:	0.2.3
 Release:	0.1
 License:	distributable
 Group:		Applications/Publishing/XML
-Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/xmlroff/%{name}-%{version}.tar.gz
+# Source0-md5:	d950e59dc638ab0312d762793580c4ef
 Patch0:		%{name}-no_static.patch
 URL:		http://xmlroff.sourceforge.net/
 BuildRequires:	autoconf
