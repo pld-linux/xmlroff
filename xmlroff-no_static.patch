@@ -1,0 +1,12 @@
+diff -Nru xmlroff-0.2.2.orig/Makefile.am xmlroff-0.2.2/Makefile.am
+--- xmlroff-0.2.2.orig/Makefile.am	Fri Feb 28 03:26:35 2003
++++ xmlroff-0.2.2/Makefile.am	Sun Apr  6 14:06:40 2003
+@@ -64,8 +64,6 @@
+ xmlroff_SOURCES = \
+ 	xmlroff.c
+ 
+-xmlroff_LDFLAGS = -static
+-
+ xmlroff_LDADD = \
+ 	libfo.la \
+ 	$(PANGO_LIBS) \
