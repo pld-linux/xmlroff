@@ -2,10 +2,11 @@ Summary:	XSL formatter
 Summary(pl):	Program formatuj±cy XSL
 Name:		xmlroff
 Version:	0.2.2
-Release:	0.1
+Release:	0.2
 License:	distributable
 Group:		Applications/Publishing/XML
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+Patch0:		%{name}-no_static.patch
 URL:		http://xmlroff.sourceforge.net/
 BuildRequires:	pangopdf-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -25,9 +26,16 @@ stworzonym przez W3C.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
-%configure
+%{__libtoolize}
+%{__aclocal}
+%{__autoheader}
+%{__autoconf}
+%{__automake}
+%configure \
+	--with-html-dir=%{_gtkdocdir}
 %{__make}
 
 %install
@@ -43,4 +51,5 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc ChangeLog README COPYING
 %attr(755,root,root) %{_bindir}/*
-%{_datadir}/%{name}
+%attr(755,root,root) %{_libdir}/libfo-*.so
+%{_gtkdocdir}/xmlroff
