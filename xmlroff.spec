@@ -1,12 +1,12 @@
 Summary:	XSL formatter
 Summary(pl):	Program formatuj±cy XSL
 Name:		xmlroff
-Version:	0.2.3
+Version:	0.2.7
 Release:	0.1
 License:	distributable
 Group:		Applications/Publishing/XML
 Source0:	http://dl.sourceforge.net/xmlroff/%{name}-%{version}.tar.gz
-# Source0-md5:	d950e59dc638ab0312d762793580c4ef
+# Source0-md5:	1b5c49769f6d0bd222fc913ee14da7dc
 Patch0:		%{name}-no_static.patch
 URL:		http://xmlroff.sourceforge.net/
 BuildRequires:	autoconf
