@@ -8,7 +8,7 @@ Summary:	XSL formatter
 Summary(pl):	Program formatuj±cy XSL
 Name:		xmlroff
 Version:	0.2.8
-Release:	2
+Release:	3
 License:	distributable
 Group:		Applications/Publishing/XML
 Source0:	http://dl.sourceforge.net/xmlroff/%{name}-%{version}.tar.gz
