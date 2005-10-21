@@ -1,0 +1,10 @@
+--- xmlroff-0.3.6/Makefile.am.orig	2005-10-21 23:33:19.000000000 +0200
++++ xmlroff-0.3.6/Makefile.am	2005-10-22 00:16:32.000000000 +0200
+@@ -78,7 +78,6 @@
+ 	$(LIBXSLT_LIBS)			\
+ 	$(GOBJECT_LIBS)			\
+ 	$(FREETYPE_LIBS)		\
+-	$(POPT_LIBS)			\
+ 	$(GDKPIXBUF_LIBS)
+ 
+ 
