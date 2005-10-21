@@ -1,19 +1,34 @@
+#
+# Conditional build:
+%bcond_without	gnomeprint	# disable GNOME Print backend
+#
 Summary:	XSL formatter
 Summary(pl):	Program formatuj±cy XSL
 Name:		xmlroff
 Version:	0.3.6
 Release:	1
-License:	distributable
+License:	BSD-like
 Group:		Applications/Publishing/XML
 Source0:	http://dl.sourceforge.net/xmlroff/%{name}-%{version}.tar.gz
 # Source0-md5:	f0ced928fb248f068d99aa6a0dba4947
 Patch0:		%{name}-no_static.patch
+Patch1:		%{name}-link.patch
 URL:		http://xmlroff.sourceforge.net/
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
+BuildRequires:	freetype-devel >= 2
+BuildRequires:	glib2-devel >= 1:2.4.0
+BuildRequires:	gtk-doc >= 0.10
+BuildRequires:	gtk+2-devel >= 1:2.2.0
+%{?with_gnomeprint:BuildRequires:	libgnomeprint-devel >= 2.8}
 BuildRequires:	libtool
-BuildRequires:	pangopdf-devel
-BuildRequires:	libxml2-devel
+BuildRequires:	pangoxsl-devel >= 1.6
+BuildRequires:	libxml2-devel >= 2.4.3
+BuildRequires:	libxslt-devel >= 1.0.3
+BuildRequires:	perl-base
+BuildRequires:	pkgconfig >= 0.5
+BuildRequires:	popt-devel
+Requires:	%{name}-libfo = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -29,21 +44,55 @@ na podstawie wej¶ciowego dokumentu XML i arkusza stylu XSL. Ten model
 przetwarzania zosta³ zdefiniowany w dokumencie XSL Recommendation
 stworzonym przez W3C.
 
-
 %package libfo
-Summary:	libfo library
-Summary(pl):	biblioteka libfo
-Group:		Applications/Publishing/XML
+Summary:	libfo - XSL formatter library
+Summary(pl):	libfo - biblioteka formatowania XSL
+Group:		Libraries
+Requires:	glib2 >= 1:2.4.0
+Requires:	gtk+2 >= 1:2.2.0
+%{?with_gnomeprint:Requires:	libgnomeprint >= 2.8}
+Requires:	pangoxsl >= 1.6
+Requires:	libxml2 >= 2.4.3
 
 %description libfo
-libfo
+libfo - XSL formatter library.
 
 %description libfo -l pl
-libfo
+libfo - biblioteka formatowania XSL.
+
+%package libfo-devel
+Summary:	Header files for libfo library
+Summary(pl):	Pliki nag³ówkowe biblioteki libfo
+Group:		Development/Libraries
+Requires:	%{name}-libfo = %{version}-%{release}
+Requires:	glib2-devel >= 1:2.4.0
+Requires:	gtk+2-devel >= 1:2.2.0
+%{?with_gnomeprint:Requires:	libgnomeprint-devel >= 2.8}
+Requires:	pangoxsl-devel >= 1.6
+Requires:	libxml2-devel >= 2.4.3
+
+%description libfo-devel
+Header files for libfo library.
+
+%description libfo-devel -l pl
+Pliki nag³ówkowe biblioteki libfo.
+
+%package libfo-static
+Summary:	Static libfo library
+Summary(pl):	Statyczna biblioteka libfo
+Group:		Development/Libraries
+Requires:	%{name}-libfo-devel = %{version}-%{release}
+
+%description libfo-static
+Static libfo library.
+
+%description libfo-static -l pl
+Statyczna biblioteka libfo.
 
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__libtoolize}
@@ -52,26 +101,40 @@ libfo
 %{__autoconf}
 %{__automake}
 %configure \
-	--with-html-dir=%{_gtkdocdir} \
-	--enable-gp
+	%{!?with_gnomeprint:--disable-gp} \
+	--with-html-dir=%{_gtkdocdir}
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%post	libfo -p /sbin/ldconfig
+%postun	libfo -p /sbin/ldconfig
+
 %files
 %defattr(644,root,root,755)
-%doc ChangeLog README COPYING
+%doc AUTHORS COPYING ChangeLog NEWS README TODO
 %attr(755,root,root) %{_bindir}/*
 %{_gtkdocdir}/xmlroff
 
 %files libfo
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libfo-*.so.*.*.*
 %{_datadir}/xml/libfo-%{version}
-%attr(755,root,root) %{_libdir}/libfo-*.so.*
+
+%files libfo-devel
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libfo-*.so
+%{_libdir}/libfo-*.la
+%{_includedir}/libfo-*
 %{_pkgconfigdir}/libfo-0.3.pc
+
+%files libfo-static
+%defattr(644,root,root,755)
+%{_libdir}/libfo-*.a
