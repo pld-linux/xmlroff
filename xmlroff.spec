@@ -3,7 +3,7 @@
 %bcond_without	gnomeprint	# disable GNOME Print backend
 #
 Summary:	XSL formatter
-Summary(pl.UTF-8):   Program formatujący XSL
+Summary(pl.UTF-8):	Program formatujący XSL
 Name:		xmlroff
 Version:	0.3.6
 Release:	1
@@ -46,7 +46,7 @@ stworzonym przez W3C.
 
 %package libfo
 Summary:	libfo - XSL formatter library
-Summary(pl.UTF-8):   libfo - biblioteka formatowania XSL
+Summary(pl.UTF-8):	libfo - biblioteka formatowania XSL
 Group:		Libraries
 Requires:	glib2 >= 1:2.4.0
 Requires:	gtk+2 >= 1:2.2.0
@@ -62,7 +62,7 @@ libfo - biblioteka formatowania XSL.
 
 %package libfo-devel
 Summary:	Header files for libfo library
-Summary(pl.UTF-8):   Pliki nagłówkowe biblioteki libfo
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libfo
 Group:		Development/Libraries
 Requires:	%{name}-libfo = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.4.0
@@ -79,7 +79,7 @@ Pliki nagłówkowe biblioteki libfo.
 
 %package libfo-static
 Summary:	Static libfo library
-Summary(pl.UTF-8):   Statyczna biblioteka libfo
+Summary(pl.UTF-8):	Statyczna biblioteka libfo
 Group:		Development/Libraries
 Requires:	%{name}-libfo-devel = %{version}-%{release}
 
