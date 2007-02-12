@@ -3,7 +3,7 @@
 %bcond_without	gnomeprint	# disable GNOME Print backend
 #
 Summary:	XSL formatter
-Summary(pl):	Program formatuj±cy XSL
+Summary(pl.UTF-8):   Program formatujƒÖcy XSL
 Name:		xmlroff
 Version:	0.3.6
 Release:	1
@@ -37,16 +37,16 @@ pages containing text in a variety of type styles and sizes - from an
 input XML document and an XSL stylesheet. This processing model is
 defined in the XSL Recommendation that was developed by the W3C.
 
-%description -l pl
-xmlroff to program formatuj±cy XSL - tzn. tworz±cy na wyj∂ciu
-strony sformatowane zawieraj±ce tekst w rÛønych stylach i rozmiarach
-na podstawie wej∂ciowego dokumentu XML i arkusza stylu XSL. Ten model
-przetwarzania zosta≥ zdefiniowany w dokumencie XSL Recommendation
+%description -l pl.UTF-8
+xmlroff to program formatujƒÖcy XSL - tzn. tworzƒÖcy na wyj≈õciu
+strony sformatowane zawierajƒÖce tekst w r√≥≈ºnych stylach i rozmiarach
+na podstawie wej≈õciowego dokumentu XML i arkusza stylu XSL. Ten model
+przetwarzania zosta≈Ç zdefiniowany w dokumencie XSL Recommendation
 stworzonym przez W3C.
 
 %package libfo
 Summary:	libfo - XSL formatter library
-Summary(pl):	libfo - biblioteka formatowania XSL
+Summary(pl.UTF-8):   libfo - biblioteka formatowania XSL
 Group:		Libraries
 Requires:	glib2 >= 1:2.4.0
 Requires:	gtk+2 >= 1:2.2.0
@@ -57,12 +57,12 @@ Requires:	libxml2 >= 2.4.3
 %description libfo
 libfo - XSL formatter library.
 
-%description libfo -l pl
+%description libfo -l pl.UTF-8
 libfo - biblioteka formatowania XSL.
 
 %package libfo-devel
 Summary:	Header files for libfo library
-Summary(pl):	Pliki nag≥Ûwkowe biblioteki libfo
+Summary(pl.UTF-8):   Pliki nag≈Ç√≥wkowe biblioteki libfo
 Group:		Development/Libraries
 Requires:	%{name}-libfo = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.4.0
@@ -74,19 +74,19 @@ Requires:	libxml2-devel >= 2.4.3
 %description libfo-devel
 Header files for libfo library.
 
-%description libfo-devel -l pl
-Pliki nag≥Ûwkowe biblioteki libfo.
+%description libfo-devel -l pl.UTF-8
+Pliki nag≈Ç√≥wkowe biblioteki libfo.
 
 %package libfo-static
 Summary:	Static libfo library
-Summary(pl):	Statyczna biblioteka libfo
+Summary(pl.UTF-8):   Statyczna biblioteka libfo
 Group:		Development/Libraries
 Requires:	%{name}-libfo-devel = %{version}-%{release}
 
 %description libfo-static
 Static libfo library.
 
-%description libfo-static -l pl
+%description libfo-static -l pl.UTF-8
 Statyczna biblioteka libfo.
 
 %prep
